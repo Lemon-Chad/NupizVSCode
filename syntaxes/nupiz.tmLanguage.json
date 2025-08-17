@@ -1,0 +1,208 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Nupiz",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#classes"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#constructor"
+		},
+		{
+			"include": "#classCall"
+		},
+		{
+			"include": "#functionCall"
+		},
+		{
+			"include": "#invoke"
+		},
+		{
+			"include": "#access"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.nupiz",
+					"match": "\\b(break|continue|else|for|from|if|new|return|while)\\b"
+				},
+				{
+					"name": "keyword.operator.nupiz",
+					"match": "(\\+|-|\\*|/|=|<|>|\\||&|!|unpack|import)"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.nupiz",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.nupiz",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric.nupiz",
+			"patterns": [
+				{
+					"name": "constant.numeric.nupiz",
+					"match": "(-)?[0-9]+(\\.[0-9]+)?"
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.line.double-slash.nupiz",
+			"begin": "//",
+			"end": "($)"
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.language.nupiz",
+					"match": "(this|super)"
+				},
+				{
+					"name": "variable.name.nupiz",
+					"begin": "\\b(let|const|var)\\s+(?:(pub|prv)\\s+)?(?:(static)\\s+)?",
+					"beginCaptures": {
+						"1": {"name": "storage.type.nupiz"},
+						"2": {"name": "storage.modifier.nupiz"},
+						"3": {"name": "storage.modifier.nupiz"}
+					},
+					"end": "\\b[_a-zA-Z][_a-zA-Z0-9]*\\b",
+					"endCaptures": {
+						"0": {"name": "variable.name.nupiz"}
+					}
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.nupiz",
+					"match": "(true|false|null)"
+				}
+			]
+		},
+		"functions": {
+			"name": "entity.name.function.nupiz",
+			"begin": "\\b(func)\\s+(?:(pub|prv|def)\\s+)?(?:(static)\\s+)?([_a-zA-z][_a-zA-Z0-9]*)\\s*(\\()",
+			"beginCaptures": {
+				"1": {"name": "storage.type.nupiz"},
+				"2": {"name": "storage.modifier.nupiz"},
+				"3": {"name": "storage.modifier.nupiz"},
+				"4": {"name": "entity.name.function.nupiz"},
+				"5": {"name": "punctuation.definition.parameters.begin.nupiz"}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {"name": "punctuation.definition.parameters.end.nupiz"}
+			},
+			"patterns": [
+				{
+					"match": "[_a-zA-Z][_a-zA-Z0-9_]*",
+					"name": "variable.parameter.nupiz"
+				},
+				{
+					"match": ",",
+					"name": "punctuation.separator.arguments.nupiz"
+				}
+			]
+		},
+		"functionCall": {
+			"name": "entity.name.function.nupiz",
+			"begin": "\\b([_a-z][_a-zA-Z0-9]*)\\s*(?=\\()",
+			"beginCaptures": {
+				"0": {"name": "entity.name.function.nupiz"}
+			},
+			"end": "\\("
+		},
+		"classCall": {
+			"name": "entity.name.class.nupiz",
+			"begin": "\\b([A-Z][a-zA-Z0-9]*)\\s*(?=\\()",
+			"beginCaptures": {
+				"0": {"name": "entity.name.class.nupiz"}
+			},
+			"end": "\\("
+		},
+		"invoke": {
+			"begin": "(\\.)([_a-zA-Z][_a-zA-Z0-9]*)(?=\\()",
+			"beginCaptures": {
+				"1": {"name": "keyword.operator.nupiz"},
+				"2": {"name": "entity.name.method"}
+			},
+			"end": "\\("
+		},
+		"access": {
+			"begin": "(\\.)",
+			"beginCaptures": {
+				"0": {"name": "keyword.operator.nupiz"}
+			},
+			"end": "([_a-zA-Z][_a-zA-Z0-9]*)",
+			"endCaptures": {
+				"0": {"name": "variable.name.nupiz"}
+			}
+		},
+		"constructor": {
+			"name": "entity.name.function.nupiz",
+			"begin": "\\b(build)\\s*(\\()",
+			"beginCaptures": {
+				"1": {"name": "storage.type.nupiz"},
+				"2": {"name": "punctuation.definition.parameters.begin.nupiz"}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {"name": "punctuation.definition.parameters.end.nupiz"}
+			},
+			"patterns": [
+				{
+					"match": "[_a-zA-Z][_a-zA-Z0-9]*",
+					"name": "variable.parameter.nupiz"
+				},
+				{
+					"match": ",",
+					"name": "punctuation.separator.arguments.nupiz"
+				}
+			]
+		},
+		"classes": {
+			"name": "entity.name.class.nupiz",
+			"begin": "\\bclass\\b",
+			"beginCaptures": {
+				"0": {"name": "storage.type.nupiz"}
+			},
+			"end": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\b(?:\\s*(<-)\\s*([_a-zA-Z][_a-zA-Z0-9]*))?",
+			"endCaptures": {
+				"1": {"name": "entity.name.class.nupiz"},
+				"2": {"name": "keyword.operator.nupiz"},
+				"3": {"name": "entity.other.inherited-class.nupiz"}
+			}
+		}
+	},
+	"scopeName": "source.nupiz"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "nupiz-lang",
+  "displayName": "Nupiz Lang",
+  "description": "Basic syntax highlighting for the Nupiz language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "nupiz",
+      "aliases": ["Nupiz", "nupiz"],
+      "extensions": [".npz"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "nupiz",
+      "scopeName": "source.nupiz",
+      "path": "./syntaxes/nupiz.tmLanguage.json"
+    }]
+  }
+}
