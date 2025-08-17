@@ -6,6 +6,8 @@
   "engines": {
     "vscode": "^1.103.0"
   },
+  "repository": "https://github.com/Lemon-Chad/NupizVSCode/",
+  "publisher": "JacksonSmith",
   "categories": [
     "Programming Languages"
   ],
