@@ -51,7 +51,11 @@
 				},
 				{
 					"name": "keyword.operator.nupiz",
-					"match": "(\\+|-|\\*|/|=|<|>|\\||&|!|unpack|import)"
+					"match": "(\\+|-|\\*|/|=|<|>|\\||&|!)"
+				},
+				{
+					"name": "keyword.operator.nupiz",
+					"match": "\\b(unpack|import)\\b"
 				}
 			]
 		},
@@ -84,7 +88,7 @@
 			"patterns": [
 				{
 					"name": "variable.language.nupiz",
-					"match": "(this|super)"
+					"match": "\\b(this|super)\\b"
 				},
 				{
 					"name": "variable.name.nupiz",
@@ -105,7 +109,7 @@
 			"patterns": [
 				{
 					"name": "constant.language.nupiz",
-					"match": "(true|false|null)"
+					"match": "\\b(true|false|null)\\b"
 				}
 			]
 		},
