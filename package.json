@@ -2,7 +2,7 @@
   "name": "nupiz-lang",
   "displayName": "Nupiz Lang",
   "description": "Basic syntax highlighting for the Nupiz language",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.103.0"
   },
