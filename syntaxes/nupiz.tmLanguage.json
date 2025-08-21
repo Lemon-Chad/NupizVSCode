@@ -92,6 +92,10 @@
 				},
 				{
 					"name": "variable.name.nupiz",
+					"match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\b"
+				},
+				{
+					"name": "variable.name.nupiz",
 					"begin": "\\b(let|const|var)\\s+(?:(pub|prv)\\s+)?(?:(static)\\s+)?",
 					"beginCaptures": {
 						"1": {"name": "storage.type.nupiz"},
