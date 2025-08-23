@@ -40,6 +40,9 @@
 		},
 		{
 			"include": "#access"
+		},
+		{
+			"include": "#identifiers"
 		}
 	],
 	"repository": {
@@ -89,10 +92,6 @@
 				{
 					"name": "variable.language.nupiz",
 					"match": "\\b(this|super)\\b"
-				},
-				{
-					"name": "variable.name.nupiz",
-					"match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\b"
 				},
 				{
 					"name": "variable.name.nupiz",
@@ -210,6 +209,15 @@
 				"2": {"name": "keyword.operator.nupiz"},
 				"3": {"name": "entity.other.inherited-class.nupiz"}
 			}
+		}, 
+		"identifiers": {
+			"name": "variable.name.nupiz",
+			"patterns": [
+				{
+					"name": "variable.name.nupiz",
+					"match": "\\b([_a-zA-Z][_a-zA-Z0-9]*)\\b"
+				}
+			]
 		}
 	},
 	"scopeName": "source.nupiz"
